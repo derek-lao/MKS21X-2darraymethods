@@ -72,14 +72,14 @@ public class RachelDriver{
       {0, 2, 0, 24}
     };
     System.out.println("\n\n--------Testing printArray(int[] ary)--------");
-    System.out.println("Should print [1, 2, 3]: " + printArray(a[1]));
-    System.out.println("Should print [2, 2]: " + printArray(b[1]));
-    System.out.println("Should print [3, 2, 1, 12]: " + printArray(c[2]));
-    System.out.println("Should print []: " + printArray(empty[0]));
+    System.out.println("a[1]--> Should print [1, 2, 3]: " + printArray(a[1]));
+    System.out.println("b[1]--> Should print [2, 2]: " + printArray(b[1]));
+    System.out.println("c[2]--> Should print [3, 2, 1, 12]: " + printArray(c[2]));
+    System.out.println("empty[0]--> Should print []: " + printArray(empty[0]));
     //--------------------------------------------------------------------//
     System.out.println("\n\n--------Testing printArray(int[][] ary)--------");
-    System.out.println("Should print [[1, 1, 1, 1, 1, 1], [2, -2, 2, 2, -2, -2, 6], [3, 3, 6, -4, -2], [0, 10, -5, 1]]: \n" + printArray(magicRow));
-    System.out.println("Should print [[8], [9, 0, 3, -1, 8], [2, 1, 2], [7, 7, 3, 9]]: \n" + printArray(magicColumn));
+    System.out.println("magicRow--> Should print [[1, 1, 1, 1, 1, 1], [2, -2, 2, 2, -2, -2, 6], [3, 3, 6, -4, -2], [0, 10, -5, 1]]: \n" + printArray(magicRow));
+    System.out.println("magicColumn--> Should print [[8], [-9, 0, 3, -1, 8], [2, 1, 2], [7, 7, 3, 9]]: \n" + printArray(magicColumn));
     //--------------------------------------------------------------------//
     System.out.println("\n\n--------Phase 1 Testing--------");
     try{
@@ -87,24 +87,31 @@ public class RachelDriver{
       System.out.println("Should print 34: " + ArrayMethods.rowSum(c, 0));
       System.out.println("Should print 6: " + ArrayMethods.rowSum(a, 1));
       System.out.println("Should print 4: " + ArrayMethods.rowSum(b, 0));
+      /*Commented out: Instead of an error, this should be 0
       System.out.println("\nIndex too big --> Should print printStackTrace: ");
-      System.out.println(ArrayMethods.rowSum(b,3)); //Error Testing
+      */
+      System.out.println("Index too large--> Should print 0: " + ArrayMethods.rowSum(b,3)); //Error Testing
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when the index is too large in rowSum. Return 0 instead!");
       e.printStackTrace();
     }
     //Error Testing
-    // try{
-    //   System.out.println("\nNegative Index --> Should print printStackTrace: ");
-    //   System.out.println(ArrayMethods.rowSum(b, -1)); //Error Testing
-    // }
+    /*Commented out: Mr. K will not be testing negative indices
+    try{
+      System.out.println("\nNegative Index --> Should print printStackTrace: ");
+      System.out.println(ArrayMethods.rowSum(b, -1)); //Error Testing
+    }
     catch (IllegalArgumentException e){
       e.printStackTrace();
     }
+    */
     try{
       System.out.println("Empty Array: should print 0: "+ ArrayMethods.columnSum(empty,0));
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
       e.printStackTrace();
     }
     //--------------------------------------------------------------------//
@@ -115,24 +122,32 @@ public class RachelDriver{
       System.out.println("Should print 1: " + ArrayMethods.columnSum(b,2));
       //^^^Here one of the rows is shorter than others
       System.out.println("Should print 5: " + ArrayMethods.columnSum(a,0));
+      /*Commented out: Instead of an error, this should be 0
       System.out.println("\nIndex too big --> Should print printStackTrace: ");
-      System.out.println(ArrayMethods.columnSum(a, 3)); //Error Testing
+      */
+      System.out.println("Index too large--> Should print 0: " + ArrayMethods.columnSum(a, 3)); //Error Testing
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when the index is too large in columnSum. Return 0 instead!");
       e.printStackTrace();
     }
     //Error Testing
-    // try{
-    //   System.out.println("\nNegative Index --> Should print printStackTrace: ");
-    //   System.out.println(ArrayMethods.columnSum(a, -1)); //Error Testing
-    // }
+    /*Commented out: Mr. K will not be testing negative indices
+    try{
+      System.out.println("\nNegative Index --> Should print printStackTrace: ");
+      System.out.println(ArrayMethods.columnSum(a, -1)); //Error Testing
+    }
     catch (IllegalArgumentException e){
       e.printStackTrace();
     }
+    */
     try{
       System.out.println("Empty Array: should print 0: "+ ArrayMethods.columnSum(empty,0));
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutofBoundsException when finding the columnSum of an empty array. Return 0 instead!");
       e.printStackTrace();
     }
 
@@ -145,6 +160,8 @@ public class RachelDriver{
       System.out.println("Empty Array: should print [0, 0, 0, 0, 0]: " + printArray(ArrayMethods.allRowSums(empty)));
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when running ArrayMethods.allRowSums on an empty array!");
       e.printStackTrace();
     }
     //Error Testing
@@ -152,6 +169,8 @@ public class RachelDriver{
       System.out.println("Should print [0, 6, 2, 12, 4]: " + printArray(ArrayMethods.allRowSums(a)));
     }
     catch (IndexOutOfBoundsException e){
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when running ArrayMethods.allRowSums on an array containing an empty array!");
       e.printStackTrace();
     }
     //--------------------------------------------------------------------//
@@ -162,7 +181,8 @@ public class RachelDriver{
       System.out.println("Should print [5, 11, 8]: " + printArray(ArrayMethods.allColSums(a)));
     }
     catch (IndexOutOfBoundsException e){
-      //This should never happen!
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when running ArrayMethods.allColSums on an uneven array!");
       e.printStackTrace();
     }
     //--------------------------------------------------------------------//
@@ -177,7 +197,8 @@ public class RachelDriver{
       System.out.println("Should print false: " + ArrayMethods.isRowMagic(c));
     }
     catch (IndexOutOfBoundsException e){
-      //This should never happen!
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when running isRowMagic");
       e.printStackTrace();
     }
     //--------------------------------------------------------------------//
@@ -191,7 +212,8 @@ public class RachelDriver{
       System.out.println("Should print false: " + ArrayMethods.isColumnMagic(c));
     }
     catch (IndexOutOfBoundsException e){
-      //This should never happen!
+      //Should not happen!
+      System.out.println("You're throwing an IndexOutOfBoundsException when running isColumnMagic");
       e.printStackTrace();
     }
   }
